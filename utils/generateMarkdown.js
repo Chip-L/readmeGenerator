@@ -3,7 +3,7 @@ function renderLicenseBadge(license) {
   if (!license) {
     return "";
   }
-  console.log(String.prototype);
+
   return `![${license}](https://img.shields.io/badge/LICENSE-${license.replace(
     / /g,
     "%20"
@@ -200,8 +200,6 @@ If you have further questions, please contact me via ${gitHubText}${emailText}`;
 
 // Generate the markdown for README (each render function displays its own lines)
 function generateMarkdown(data) {
-  console.log(data);
-
   return `# ${data.title}
 ${renderLicenseBadge(data.license)}
 ## Description

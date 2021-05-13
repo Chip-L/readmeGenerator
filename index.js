@@ -1,11 +1,10 @@
-// TODO: Include packages needed for this application
+// packages needed for this application
 const fs = require("fs");
 const path = require("path");
 const inquirer = require("inquirer");
 const generateMarkdown = require("./utils/generateMarkdown");
-const makeMD = require("./utils/generateMarkdown");
 
-// TODO: Create an array of questions for user input
+// array of questions for user input
 const questions = [
   {
     type: "input",
@@ -20,7 +19,7 @@ const questions = [
   },
   {
     type: "list",
-    message: "Which license would you like to use (optional): ",
+    message: "Which license would you like to use (recommended): ",
     choices: [
       "None",
       "MIT",
@@ -32,6 +31,7 @@ const questions = [
       "Mozilla Public License 2.0",
       "Apache License 2.0",
       "Boost Software License 1.0",
+      new inquirer.Separator(),
     ],
     name: "license",
     default: "MIT",
@@ -39,18 +39,19 @@ const questions = [
   },
   {
     type: "confirm",
-    message: "Would you like a table of content?",
+    message: "Would you like a table of content (recommended)?",
     name: "toc",
     default: "y",
   },
   {
     type: "input",
-    message: "What are the steps required to install your project (optional): ",
+    message:
+      "What are the steps required to install your project (recommended): ",
     name: "installation",
   },
   {
     type: "input",
-    message: "Describe the usage (optional): ",
+    message: "Describe the usage (recommended): ",
     name: "usage",
   },
   {
@@ -85,19 +86,15 @@ const questions = [
   },
 ];
 
-// TODO: Create a function to write README file
+// write README file
 function writeToFile(fileName, data) {
-  // path-join method
-  console.log(fileName, ":");
-  console.log(data);
-
   // always stores to local directory - regardless of where the function is called from
   fs.writeFile(path.join(process.cwd(), fileName), data, (err) =>
-    err ? console.error(err) : console.log("file saved")
+    err ? console.error(err) : console.log("\n\nFile created")
   );
 }
 
-// TODO: Create a function to initialize app
+// initialize app
 function init() {
   inquirer.prompt(questions).then((data) => {
     writeToFile("README.md", generateMarkdown(data));
