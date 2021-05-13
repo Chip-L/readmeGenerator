@@ -47,7 +47,7 @@ function renderToC(data) {
   text = `
 ## Table of Contents
 
-${renderInstallLink(data.installation)}
+${renderInstallLink(data.installation)}${renderUsageLink(data.usage)}
 ${renderLicenseLink(data.license)}`;
 
   return text;
@@ -66,8 +66,24 @@ function renderInstallSection(install) {
 
 ##Installation
 
-${install}
-  `;
+${install}`;
+  return text;
+}
+
+function renderUsageLink(usage) {
+  return usage ? `*[Usage](#usage)` : "";
+}
+
+function renderUsageSection(usage) {
+  if (!usage || usage === "") {
+    return "";
+  }
+
+  text = `
+
+##Usage
+
+${usage}`;
   return text;
 }
 
@@ -80,9 +96,11 @@ ${renderLicenseBadge(data.license)}
 ## Description
 
 ${data.description}
-${renderToC(data)}
-${renderInstallSection(data.installation)}
-${renderLicenseSection(data.license)}
+${renderToC(data)}${renderInstallSection(
+    data.installation
+  )}${renderUsageSection(data.usage)}
+
+  ${renderLicenseSection(data.license)}
 `;
 }
 

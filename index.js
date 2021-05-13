@@ -48,8 +48,8 @@ const questions = [
     name: "installation",
   },
   {
-    this: "input",
-    MessageChannel: "Describe the usage (optional): ",
+    this: "editor",
+    message: "Describe the usage (optional): ",
     name: "usage",
   },
 ];
