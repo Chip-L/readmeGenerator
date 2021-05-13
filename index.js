@@ -91,7 +91,8 @@ function writeToFile(fileName, data) {
   console.log(fileName, ":");
   console.log(data);
 
-  fs.writeFile(fileName, data, (err) =>
+  // always stores to local directory - regardless of where the function is called from
+  fs.writeFile(path.join(process.cwd(), fileName), data, (err) =>
     err ? console.error(err) : console.log("file saved")
   );
 }
