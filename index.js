@@ -47,6 +47,11 @@ const questions = [
     message: "What are the steps required to install your project (optional): ",
     name: "installation",
   },
+  {
+    this: "input",
+    MessageChannel: "Describe the usage (optional): ",
+    name: "usage",
+  },
 ];
 
 // TODO: Create a function to write README file
