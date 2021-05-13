@@ -1,5 +1,7 @@
 // Return a license badge based on which license is passed in (If there is no license, return an empty string)
-function renderLicenseBadge(license) {}
+function renderLicenseBadge(license) {
+  return license;
+}
 
 // Returns the license link
 function renderLicenseLink(license) {
@@ -41,11 +43,16 @@ This project is licensed under the terms of the ${license} license. For more inf
 
 // Generate the markdown for README (each render function displays its own lines)
 function generateMarkdown(data) {
+  console.log(data);
+
   return `# ${data.title}
-  ${renderLicenseBadge}
+  ${renderLicenseBadge(data.license)}
   ## Description
   
   ${data.description}
+
+  ${renderToC(data)}
+
   ${renderLicenseSection(data.license)}
 `;
 }

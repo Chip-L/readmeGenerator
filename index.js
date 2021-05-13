@@ -25,7 +25,7 @@ const questions = [
       "",
       "MIT",
       "GNU GPLv3",
-      "The Unlicense",
+      "Unlicense",
       new inquirer.Separator(),
       "GNU AGPLv3",
       "GNU LGPLv3",
@@ -36,6 +36,17 @@ const questions = [
     name: "license",
     loop: false,
   },
+  {
+    type: "confirm",
+    message: "Would you like a table of content?",
+    name: "toc",
+    default: "y",
+  },
+  {
+    type: "input",
+    message: "What are the steps required to install your project (optional): ",
+    name: "installation",
+  },
 ];
 
 // TODO: Create a function to write README file
@@ -43,6 +54,10 @@ function writeToFile(fileName, data) {
   // path-join method
   console.log(fileName, ":");
   console.log(data);
+
+  fs.writeFile(fileName, data, (err) =>
+    err ? console.error(err) : console.log("file saved")
+  );
 }
 
 // TODO: Create a function to initialize app
