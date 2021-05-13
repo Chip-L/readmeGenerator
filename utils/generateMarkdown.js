@@ -34,11 +34,41 @@ function renderLicenseSection(license) {
   }
 
   return `
-
 ## License
 
 This project is licensed under the terms of the ${license} license. For more information please, refer to [https://choosealicense.com/](https://choosealicense.com/${licenseLoc}/).
 `;
+}
+
+function renderToC(data) {
+  if (!data.toc) {
+    return "";
+  }
+  text = `
+## Table of Contents
+
+${renderInstallLink(data.installation)}
+${renderLicenseLink(data.license)}`;
+
+  return text;
+}
+
+function renderInstallLink(install) {
+  return install ? `*[Installation](#installation)` : "";
+}
+
+function renderInstallSection(install) {
+  if (!install || install === "") {
+    return "";
+  }
+
+  text = `
+
+##Installation
+
+${install}
+  `;
+  return text;
 }
 
 // Generate the markdown for README (each render function displays its own lines)
@@ -46,14 +76,13 @@ function generateMarkdown(data) {
   console.log(data);
 
   return `# ${data.title}
-  ${renderLicenseBadge(data.license)}
-  ## Description
-  
-  ${data.description}
+${renderLicenseBadge(data.license)}
+## Description
 
-  ${renderToC(data)}
-
-  ${renderLicenseSection(data.license)}
+${data.description}
+${renderToC(data)}
+${renderInstallSection(data.installation)}
+${renderLicenseSection(data.license)}
 `;
 }
 
