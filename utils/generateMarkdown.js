@@ -1,6 +1,13 @@
 // Return a license badge based on which license is passed in (If there is no license, return an empty string)
 function renderLicenseBadge(license) {
-  return license;
+  if (!license) {
+    return "";
+  }
+  console.log(String.prototype);
+  return `![${license}](https://img.shields.io/badge/LICENSE-${license.replace(
+    / /g,
+    "%20"
+  )}-blue)`;
 }
 
 // Returns the license link
