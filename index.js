@@ -73,6 +73,16 @@ const questions = [
     message: "Tell how other people can contribute (optional): ",
     name: "contribution",
   },
+  {
+    type: "input",
+    message: "What is your GitHub username (optional): ",
+    name: "gitHub",
+  },
+  {
+    type: "input",
+    message: "What is your email address (optional): ",
+    name: "email",
+  },
 ];
 
 // TODO: Create a function to write README file

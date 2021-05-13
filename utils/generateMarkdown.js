@@ -53,7 +53,10 @@ ${renderInstallLink(data.installation)}${renderUsageLink(
     data.license
   )}${renderFeatureLink(data.features)}${renderTestLink(
     data.tests
-  )}${renderHowToContributeLink(data.contribution)}`;
+  )}${renderHowToContributeLink(data.contribution)}${renderQuestionsLink(
+    data.gitHub,
+    data.email
+  )}`;
 
   return text;
 }
@@ -160,6 +163,34 @@ ${contribution}`;
   return text;
 }
 
+function renderQuestionsLink(gitHub, email) {
+  return gitHub || email ? `- [Questions](#questions)\n` : "";
+}
+
+function renderQuestionsSection(gitHub, email) {
+  let gitHubText = "";
+  let emailText = "";
+
+  if ((!gitHub || gitHub === "") && (!email || email === "")) {
+    return "";
+  }
+  if (gitHub) {
+    gitHubText = `GitHub at [${gitHub}](https://github.com/${gitHub}/)`;
+    if (email) {
+      emailText = ` or by ${email}`;
+    }
+  } else {
+    emailText = `${email}`;
+  }
+
+  text = `
+
+## Questions
+
+If you have further questions, please contact me via ${gitHubText}${emailText}`;
+  return text;
+}
+
 // Generate the markdown for README (each render function displays its own lines)
 function generateMarkdown(data) {
   console.log(data);
@@ -177,7 +208,7 @@ ${renderToC(data)}${renderInstallSection(
     data.features
   )}${renderTestSection(data.tests)}${renderHowToContributeSection(
     data.contribution
-  )}
+  )}${renderQuestionsSection(data.gitHub, data.email)}
 `;
 }
 
