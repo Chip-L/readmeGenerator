@@ -33,6 +33,7 @@ function renderLicenseSection(license) {
     return "";
   }
 
+  //get url portion for license (it isn't simply string conversion)
   for (let elem of licenseLocations) {
     if (elem[0] === license) {
       licenseLoc = elem[1];
@@ -44,7 +45,7 @@ function renderLicenseSection(license) {
 
 ## License
 
-This project is licensed under the terms of the ${license} license. For more information please, refer to [https://choosealicense.com/](https://choosealicense.com/${licenseLoc}/).`;
+This project is licensed under the terms of the ${license} license. For more information please, refer to [https://choosealicense.com/](https://choosealicense.com/licenses/${licenseLoc}/).`;
 }
 
 function renderToC(data) {
