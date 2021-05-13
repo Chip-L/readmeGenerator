@@ -5,7 +5,7 @@ function renderLicenseBadge(license) {
 
 // Returns the license link
 function renderLicenseLink(license) {
-  return license ? `*[License](#license)` : "";
+  return license ? `- [License](#license)\n` : "";
 }
 
 // Return the license section of README (If there is no license, return an empty string)
@@ -51,13 +51,15 @@ ${renderInstallLink(data.installation)}${renderUsageLink(
     data.usage
   )}${renderCollaboratorLink(data.collaborators)}${renderLicenseLink(
     data.license
-  )}${renderFeatureLink(data.features)}${renderTestLink(data.tests)}`;
+  )}${renderFeatureLink(data.features)}${renderTestLink(
+    data.tests
+  )}${renderHowToContributeLink(data.contribution)}`;
 
   return text;
 }
 
 function renderInstallLink(install) {
-  return install ? `*[Installation](#installation)` : "";
+  return install ? `- [Installation](#installation)\n` : "";
 }
 
 function renderInstallSection(install) {
@@ -67,14 +69,14 @@ function renderInstallSection(install) {
 
   text = `
 
-##Installation
+## Installation
 
 ${install}`;
   return text;
 }
 
 function renderUsageLink(usage) {
-  return usage ? `*[Usage](#usage)` : "";
+  return usage ? `- [Usage](#usage)\n` : "";
 }
 
 function renderUsageSection(usage) {
@@ -84,14 +86,14 @@ function renderUsageSection(usage) {
 
   text = `
 
-##Usage
+## Usage
 
 ${usage}`;
   return text;
 }
 
 function renderCollaboratorLink(collaborators) {
-  return collaborators ? `*[Collaborators](#collaborators)` : "";
+  return collaborators ? `- [Collaborators](#collaborators)\n` : "";
 }
 
 function renderCollaboratorSection(collaborators) {
@@ -101,14 +103,14 @@ function renderCollaboratorSection(collaborators) {
 
   text = `
 
-##Collaborators
+## Collaborators
 
 ${collaborators}`;
   return text;
 }
 
 function renderFeatureLink(features) {
-  return features ? `*[Features](#features)` : "";
+  return features ? `- [Features](#features)\n` : "";
 }
 
 function renderFeatureSection(features) {
@@ -118,14 +120,14 @@ function renderFeatureSection(features) {
 
   text = `
 
-##Features
+## Features
 
 ${features}`;
   return text;
 }
 
 function renderTestLink(tests) {
-  return tests ? `*[Tests](#tests)` : "";
+  return tests ? `- [Tests](#tests)\n` : "";
 }
 
 function renderTestSection(tests) {
@@ -135,9 +137,26 @@ function renderTestSection(tests) {
 
   text = `
 
-##Tests
+## Tests
 
 ${tests}`;
+  return text;
+}
+
+function renderHowToContributeLink(contribution) {
+  return contribution ? `- [How to Contribute](#how-to-contribute)\n` : "";
+}
+
+function renderHowToContributeSection(contribution) {
+  if (!contribution || contribution === "") {
+    return "";
+  }
+
+  text = `
+
+## How to Contribute
+
+${contribution}`;
   return text;
 }
 
@@ -156,7 +175,9 @@ ${renderToC(data)}${renderInstallSection(
     data.collaborators
   )}${renderLicenseSection(data.license)}${renderFeatureSection(
     data.features
-  )}${renderTestSection(data.tests)}
+  )}${renderTestSection(data.tests)}${renderHowToContributeSection(
+    data.contribution
+  )}
 `;
 }
 

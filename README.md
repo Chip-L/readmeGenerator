@@ -1,34 +1,44 @@
-# fsad
+# asd
 MIT
 ## Description
 
-asdf
+asd
 
 ## Table of Contents
 
-*[Installation](#installation)*[Usage](#usage)*[Collaborators](#collaborators)*[License](#license)*[Features](#features)*[Tests](#tests)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Collaborators](#collaborators)
+- [License](#license)
+- [Features](#features)
+- [Tests](#tests)
+- [How to Contribute](#how-to-contribute)
 
-##Installation
 
-asdf
-
-##Usage
+## Installation
 
 fds
 
-##Collaborators
+## Usage
 
-asdf
-  
+asd
+
+## Collaborators
+
+fsda
+
 ## License
 
 This project is licensed under the terms of the MIT license. For more information please, refer to [https://choosealicense.com/](https://choosealicense.com/mit/).
 
+## Features
 
-##Features
+asd
+
+## Tests
 
 fds
 
-##Tests
+## How to Contribute
 
-asdf
+as
