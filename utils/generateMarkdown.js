@@ -34,10 +34,10 @@ function renderLicenseSection(license) {
   }
 
   return `
+
 ## License
 
-This project is licensed under the terms of the ${license} license. For more information please, refer to [https://choosealicense.com/](https://choosealicense.com/${licenseLoc}/).
-`;
+This project is licensed under the terms of the ${license} license. For more information please, refer to [https://choosealicense.com/](https://choosealicense.com/${licenseLoc}/).`;
 }
 
 function renderToC(data) {
@@ -47,8 +47,11 @@ function renderToC(data) {
   text = `
 ## Table of Contents
 
-${renderInstallLink(data.installation)}${renderUsageLink(data.usage)}
-${renderLicenseLink(data.license)}`;
+${renderInstallLink(data.installation)}${renderUsageLink(
+    data.usage
+  )}${renderCollaboratorLink(data.collaborators)}${renderLicenseLink(
+    data.license
+  )}${renderFeatureLink(data.features)}${renderTestLink(data.tests)}`;
 
   return text;
 }
@@ -87,6 +90,57 @@ ${usage}`;
   return text;
 }
 
+function renderCollaboratorLink(collaborators) {
+  return collaborators ? `*[Collaborators](#collaborators)` : "";
+}
+
+function renderCollaboratorSection(collaborators) {
+  if (!collaborators || collaborators === "") {
+    return "";
+  }
+
+  text = `
+
+##Collaborators
+
+${collaborators}`;
+  return text;
+}
+
+function renderFeatureLink(features) {
+  return features ? `*[Features](#features)` : "";
+}
+
+function renderFeatureSection(features) {
+  if (!features || features === "") {
+    return "";
+  }
+
+  text = `
+
+##Features
+
+${features}`;
+  return text;
+}
+
+function renderTestLink(tests) {
+  return tests ? `*[Tests](#tests)` : "";
+}
+
+function renderTestSection(tests) {
+  if (!tests || tests === "") {
+    return "";
+  }
+
+  text = `
+
+##Tests
+
+${tests}`;
+  return text;
+}
+
 // Generate the markdown for README (each render function displays its own lines)
 function generateMarkdown(data) {
   console.log(data);
@@ -98,9 +152,11 @@ ${renderLicenseBadge(data.license)}
 ${data.description}
 ${renderToC(data)}${renderInstallSection(
     data.installation
-  )}${renderUsageSection(data.usage)}
-
-  ${renderLicenseSection(data.license)}
+  )}${renderUsageSection(data.usage)}${renderCollaboratorSection(
+    data.collaborators
+  )}${renderLicenseSection(data.license)}${renderFeatureSection(
+    data.features
+  )}${renderTestSection(data.tests)}
 `;
 }
 

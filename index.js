@@ -22,7 +22,7 @@ const questions = [
     type: "list",
     message: "Which license would you like to use (optional): ",
     choices: [
-      "",
+      "None",
       "MIT",
       "GNU GPLv3",
       "Unlicense",
@@ -34,6 +34,7 @@ const questions = [
       "Boost Software License 1.0",
     ],
     name: "license",
+    default: "MIT",
     loop: false,
   },
   {
@@ -48,9 +49,24 @@ const questions = [
     name: "installation",
   },
   {
-    this: "editor",
+    type: "input",
     message: "Describe the usage (optional): ",
     name: "usage",
+  },
+  {
+    type: "input",
+    message: "List your collaborators (optional): ",
+    name: "collaborators",
+  },
+  {
+    type: "input",
+    message: "Describe your features (optional): ",
+    name: "features",
+  },
+  {
+    type: "input",
+    message: "Describe how to run the tests (optional): ",
+    name: "tests",
   },
 ];
 
